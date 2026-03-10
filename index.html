@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CedBan | Computer Engineering & Repair</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+  body, h1, h2, h3, h4, h5, h6 {font-family: "Montserrat", sans-serif}
+  .w3-row-padding img {margin-bottom: 12px}
+  .w3-sidebar {width: 120px;background: #111;}
+  #main {margin-left: 120px}
+  
+  /* Form Visibility */
+  .w3-input {
+    border: 1px solid #555 !important;
+    background-color: #222 !important;
+    color: white !important;
+    margin-bottom: 15px;
+  }
+  .w3-input:focus {
+    border: 1px solid #fff !important;
+    background-color: #333 !important;
+  }
+  
+  .custom-btn {
+    width: 100%;
+    padding: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: none;
+    transition: 0.3s;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .project-img {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  }
+
+  #success-block {
+    display: none;
+  }
+
+  @media only screen and (max-width: 600px) {
+    #main {margin-left: 0}
+    .w3-sidebar {display: none;}
+  }
+</style>
+</head>
+
+<body class="w3-black">
+
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>HOME</p>
+  </a>
+  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+    <i class="fa fa-user w3-xxlarge"></i>
+    <p>ABOUT</p>
+  </a>
+  <a href="#services" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+    <i class="fa fa-gamepad w3-xxlarge"></i>
+    <p>SERVICES</p>
+  </a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+    <i class="fa fa-envelope w3-xxlarge"></i>
+    <p>CONTACT</p>
+  </a>
+</nav>
+
+<div class="w3-padding-large" id="main">
+
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <h1 class="w3-jumbo"><b>CedBan</b></h1>
+    <p class="w3-large">Computer Engineering Student & Hardware Specialist</p>
+    <img src="IMG_7653.jpg" class="w3-image w3-round w3-margin-top" style="width:100%; max-width:900px">
+  </header>
+
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+    <h2 class="w3-text-light-grey">About Me</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <p>
+      I am a Computer Engineering student at the University of Minnesota focusing on IT Infrastructure and Security. 
+      I specialize in custom desktop builds, hardware diagnostics, and secure infrastructure. 
+      I bridge the gap between complex digital needs and high-performance hardware solutions.
+    </p>
+    
+    <h3 class="w3-padding-16 w3-text-light-grey">Recent Projects</h3>
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+        <img src="IMG_5720.jpg" class="project-img" alt="Custom Build">
+        <img src="IMG_5695.jpg" class="project-img" alt="Internal Hardware Swap">
+      </div>
+      <div class="w3-half">
+        <img src="IMG_5704.jpg" class="project-img" alt="Hardware Diagnostics">
+        <img src="IMG_5721.jpg" class="project-img" alt="Workstation Setup">
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-padding-64 w3-content" id="services">
+    <h2 class="w3-text-light-grey">Services & Expertise</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-col l6 m6 w3-margin-bottom">
+        <ul class="w3-ul w3-card w3-dark-grey">
+          <li class="w3-black w3-xlarge w3-padding-32">Gaming & Custom Builds</li>
+          <li class="w3-padding-16">Optimized builds for specific performance goals</li>
+          <li class="w3-padding-16">Best parts recommendations based on your games</li>
+          <li class="w3-padding-16">Full assembly and thermal stress testing</li>
+        </ul>
+      </div>
+
+      <div class="w3-col l6 m6">
+        <ul class="w3-ul w3-card w3-dark-grey">
+          <li class="w3-black w3-xlarge w3-padding-32">Repair & Maintenance</li>
+          <li class="w3-padding-16">OS Wiping & Windows Reinstallation</li>
+          <li class="w3-padding-16">Desktop & Laptop Motherboard Swaps</li>
+          <li class="w3-padding-16">Labor Rate: <b>$45 / Hour</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="w3-panel w3-leftbar w3-light-grey w3-padding-16 w3-margin-top">
+      <p><i>Note: For hardware upgrades, you can purchase parts directly based on my recommendation, or I can acquire them for you (prices vary by market).</i></p>
+    </div>
+  </div>
+
+  <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
+    <h2 class="w3-text-light-grey">Request a Consultation</h2>
+    <hr style="width:200px" class="w3-opacity">
+    
+    <div id="success-block" class="w3-container w3-card w3-dark-grey w3-padding-32 w3-margin-bottom">
+        <h3 class="w3-text-white"><i class="fa fa-check-circle w3-text-green"></i> Request Received!</h3>
+        <p>I will review your details and reply to your email shortly.</p>
+        <button onclick="window.location.href='#home'" class="w3-button w3-light-grey w3-round">Return Home</button>
+    </div>
+
+    <form action="https://formspree.io/f/mwvrlqod" method="POST" id="repair-form">
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Full Name" required name="name"></p>
+      <p><input class="w3-input w3-padding-16" type="email" placeholder="Email Address" required name="email"></p>
+      <p><input class="w3-input w3-padding-16" type="tel" placeholder="Phone Number (Optional)" name="phone"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Service Needed (e.g. Gaming PC Build)" required name="service_type"></p>
+      <p><textarea class="w3-input w3-padding-16" style="height:150px" placeholder="Explain what you need or what games you want to play..." required name="message"></textarea></p>
+      
+      <input type="hidden" name="_subject" value="New CedBan Service Request">
+      <p><button class="w3-button w3-white w3-padding-large custom-btn" type="submit">SEND REQUEST</button></p>
+    </form>
+
+    <div class="w3-section">
+      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Minnesota, US</p>
+    </div>
+  </div>
+
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-center">
+    <p class="w3-medium">© 2026 CedBan Solutions</p>
+  </footer>
+</div>
+
+<script>
+  // Script to show success message if redirected with ?success=true
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('success')) {
+      document.getElementById('repair-form').style.display = 'none';
+      document.getElementById('success-block').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
