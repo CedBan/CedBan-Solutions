@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>CedBan | Computer Engineering & Repair</title>
+<title>CedBan | IT Infrastructure & Repair</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -14,43 +14,102 @@
   .w3-sidebar {width: 120px;background: #111;}
   #main {margin-left: 120px}
   
-  /* Form Visibility */
-  .w3-input {
+  .w3-input, select {
     border: 1px solid #555 !important;
     background-color: #222 !important;
     color: white !important;
     margin-bottom: 15px;
-  }
-  .w3-input:focus {
-    border: 1px solid #fff !important;
-    background-color: #333 !important;
+    width: 100%;
+    padding: 12px;
   }
   
-  .custom-btn {
-    width: 100%;
-    padding: 18px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    border: none;
-    transition: 0.3s;
-    cursor: pointer;
-    font-size: 16px;
+  .comparison-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
   }
-  
-  .project-img {
-    width: 100%;
+  .comparison-img-wrapper { width: 40%; text-align: center; }
+  .comparison-img {
+    width: 100%; 
     border-radius: 4px;
-    margin-bottom: 24px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+    object-fit: cover;
   }
 
-  #success-block {
-    display: none;
+  .spec-label { 
+    font-size: 19px; 
+    color: #f1f1f1; 
+    line-height: 1.6; 
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
   }
+
+  /* Tooltip for Serial Number */
+  .tooltip { position: relative; display: inline-block; cursor: pointer; color: #2196F3; margin-left: 5px; }
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 280px;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 15px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -140px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 13px;
+    line-height: 1.4;
+    border: 1px solid #555;
+  }
+  .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
+
+  /* Visual Divider for Estimator */
+  .estimator-divider { border-top: 2px solid #555; width: 60px; margin: 15px auto; }
+
+  /* Component Explorer Hover */
+  .comp-card {
+    position: relative;
+    overflow: hidden;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    height: 300px;
+  }
+  .comp-img { width: 100%; height: 100%; object-fit: contain; padding: 25px; transition: 0.5s; }
+  .comp-overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
+    padding: 25px;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .comp-card:hover .comp-overlay { bottom: 0; }
+  .comp-overlay p { font-size: 17px; line-height: 1.5; }
+
+  /* Star Rating Styles */
+  .star-rating { color: #f1c40f; font-size: 18px; margin-bottom: 10px; }
+  .review-card { background: #1a1a1a; padding: 20px; border-left: 4px solid #2196F3; margin-bottom: 20px; }
+  .star-input { font-size: 24px; cursor: pointer; color: #444; }
+  .star-input.active { color: #f1c40f; }
 
   @media only screen and (max-width: 600px) {
     #main {margin-left: 0}
     .w3-sidebar {display: none;}
+    .comparison-container { flex-direction: column; align-items: center; }
+    .comparison-img-wrapper { width: 85%; }
   }
 </style>
 </head>
@@ -59,119 +118,427 @@
 
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
   <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
-    <i class="fa fa-home w3-xxlarge"></i>
+    <img src="98a78e62-4c8c-491a-a720-a3c9ecb446e5.jpg" alt="CedBan Circuit Logo" style="width:100%; border-radius: 8px;">
     <p>HOME</p>
   </a>
+  <a href="#projects" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+    <i class="fa fa-desktop w3-xxlarge"></i><p>WORK</p></a>
+  <a href="#building" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+    <i class="fa fa-cubes w3-xxlarge"></i><p>BUILDING</p></a>
+  <a href="#calculator" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+    <i class="fa fa-calculator w3-xxlarge"></i><p>ESTIMATOR</p></a>
+  <a href="#reviews" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+    <i class="fa fa-star w3-xxlarge"></i><p>REVIEWS</p></a>
+  <a href="#payments" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+    <i class="fa fa-credit-card w3-xxlarge"></i><p>PAYMENT</p></a>
   <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-user w3-xxlarge"></i>
-    <p>ABOUT</p>
-  </a>
-  <a href="#services" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-gamepad w3-xxlarge"></i>
-    <p>SERVICES</p>
-  </a>
+    <i class="fa fa-user w3-xxlarge"></i><p>ABOUT</p></a>
   <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-envelope w3-xxlarge"></i>
-    <p>CONTACT</p>
-  </a>
+    <i class="fa fa-envelope w3-xxlarge"></i><p>CONTACT</p></a>
 </nav>
+
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <button class="w3-bar-item w3-button w3-right" onclick="toggleMobileNav()"><i class="fa fa-bars"></i></button>
+  </div>
+  <div id="mobileNav" class="w3-bar-block w3-black w3-hide w3-center">
+    <a href="#" class="w3-bar-item w3-button" onclick="toggleMobileNav()">HOME</a>
+    <a href="#projects" class="w3-bar-item w3-button" onclick="toggleMobileNav()">WORK</a>
+    <a href="#building" class="w3-bar-item w3-button" onclick="toggleMobileNav()">BUILDING</a>
+    <a href="#calculator" class="w3-bar-item w3-button" onclick="toggleMobileNav()">ESTIMATOR</a>
+    <a href="#reviews" class="w3-bar-item w3-button" onclick="toggleMobileNav()">REVIEWS</a>
+    <a href="#payments" class="w3-bar-item w3-button" onclick="toggleMobileNav()">PAYMENT</a>
+    <a href="#about" class="w3-bar-item w3-button" onclick="toggleMobileNav()">ABOUT</a>
+    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleMobileNav()">CONTACT</a>
+  </div>
+</div>
 
 <div class="w3-padding-large" id="main">
 
   <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-    <h1 class="w3-jumbo"><b>CedBan</b></h1>
-    <p class="w3-large">Computer Engineering Student & Hardware Specialist</p>
-    <img src="IMG_7653.jpg" class="w3-image w3-round w3-margin-top" style="width:100%; max-width:900px">
+    <img src="98a78e62-4c8c-491a-a720-a3c9ecb446e5.jpg" alt="CedBan Circuit Logo" style="width:300px; border-radius: 8px; margin-bottom: 15px;">
+    <p class="w3-large">IT Infrastructure & Hardware Specialist | Minneapolis, MN</p>
   </header>
 
-  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-    <h2 class="w3-text-light-grey">About Me</h2>
+  <div class="w3-content w3-padding-64" id="projects">
+    <h2 class="w3-text-light-grey">Recent Work & Repairs</h2>
     <hr style="width:200px" class="w3-opacity">
-    <p>
-      I am a Computer Engineering student at the University of Minnesota focusing on IT Infrastructure and Security. 
-      I specialize in custom desktop builds, hardware diagnostics, and secure infrastructure. 
-      I bridge the gap between complex digital needs and high-performance hardware solutions.
-    </p>
     
-    <h3 class="w3-padding-16 w3-text-light-grey">Recent Projects</h3>
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-half">
-        <img src="IMG_5720.jpg" class="project-img" alt="Custom Build">
-        <img src="IMG_5695.jpg" class="project-img" alt="Internal Hardware Swap">
+    <div class="w3-container w3-margin-bottom w3-center">
+      <div class="comparison-container">
+        <div class="comparison-img-wrapper"><img src="IMG_5732.jpg" class="comparison-img" alt="Mid Tier On"></div>
+        <div class="comparison-img-wrapper"><img src="IMG_5731.jpg" class="comparison-img" alt="Mid Tier Off"></div>
       </div>
-      <div class="w3-half">
-        <img src="IMG_5704.jpg" class="project-img" alt="Hardware Diagnostics">
-        <img src="IMG_5721.jpg" class="project-img" alt="Workstation Setup">
+      <p class="spec-label"><b>Personal Mid-Tier Build:</b> Side-by-side visuals of my primary system. <br> Specs: Ryzen 5600x | MSI 3070 GPU | 32GB RAM | 1TB M.2 SSD.</p>
+    </div>
+
+    <div class="w3-container w3-margin-bottom w3-center">
+      <div class="comparison-container">
+        <div class="comparison-img-wrapper"><img src="IMG_5730.jpg" class="comparison-img" alt="Low Tier On"></div>
+        <div class="comparison-img-wrapper"><img src="IMG_5729.jpg" class="comparison-img" alt="Low Tier Off"></div>
+      </div>
+      <p class="spec-label"><b>Budget Tier Build:</b> Visual contrast of a cost-effective build optimized for 1080p. <br> Specs: RTX 970 | Ryzen 1600 | 16GB RAM.</p>
+    </div>
+
+    <div class="w3-container w3-margin-bottom w3-center">
+      <div class="comparison-container">
+        <div class="comparison-img-wrapper">
+            <b class="w3-text-red">BEFORE</b>
+            <img src="IMG_5695.jpg" class="comparison-img" alt="Motherboard Work">
+        </div>
+        <div class="comparison-img-wrapper">
+            <b class="w3-text-green">AFTER</b>
+            <img src="IMG_5704 (1).jpg" class="comparison-img" alt="Laptop Finished">
+        </div>
+      </div>
+      <p class="spec-label"><b>HP ENVY X360 Motherboard Swap:</b> Full logic board replacement for a 2019 chassis. This repair involved migrating the CPU cooling assembly and stress-testing the power rail stability to restore factory-standard performance.</p>
+    </div>
+  </div>
+
+  <div class="w3-padding-64 w3-content" id="building">
+    <h2 class="w3-text-light-grey">Building a Computer</h2>
+    <hr style="width:200px" class="w3-opacity">
+    
+    <div class="w3-row-padding w3-center" style="margin-bottom:32px">
+      <div class="w3-third"><h3 class="w3-text-green">Low Tier</h3><p class="w3-large">$600 - $800*</p></div>
+      <div class="w3-third"><h3 class="w3-text-blue">Mid Tier</h3><p class="w3-large">$1,200 - $1,600*</p></div>
+      <div class="w3-third"><h3 class="w3-text-red">High Tier</h3><p class="w3-large">$2,500+*</p></div>
+    </div>
+
+    <h4 class="w3-center w3-padding-16">Hover to Explore Components</h4>
+    
+    <div class="w3-row-padding">
+      <div class="w3-third">
+        <div class="comp-card">
+          <img src="power-supply-unit-icon-doodle-hand-drawn-vector-42070346.jpg" class="comp-img">
+          <div class="comp-overlay">
+            <h5>Power Supply (PSU)</h5>
+            <p>Provides stable power. 80+ rated units are recommended for efficiency and surge protection.</p>
+          </div>
+        </div>
+      </div>
+      <div class="w3-third">
+        <div class="comp-card">
+          <img src="gpu-icon-outline-simple-design-with-editable-stroke-vector-illustration-W6H7D6.jpg" class="comp-img">
+          <div class="comp-overlay">
+            <h5>Graphics Card (GPU)</h5>
+            <p>The visual brain. Critical for gaming, rendering, and professional 3D work.</p>
+          </div>
+        </div>
+      </div>
+      <div class="w3-third">
+        <div class="comp-card">
+          <img src="istockphoto-1474935287-612x6123.jpg" class="comp-img">
+          <div class="comp-overlay">
+            <h5>SSD Sata</h5>
+            <p>Significantly faster than mechanical drives. Best for upgrading older laptops.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-row-padding">
+      <div class="w3-third">
+        <div class="comp-card">
+          <img src="istockphoto-1474935287-612x612.jpg" class="comp-img">
+          <div class="comp-overlay">
+            <h5>HDD</h5>
+            <p>Large storage at low prices. Ideal for archiving massive photo and video libraries.</p>
+          </div>
+        </div>
+      </div>
+      <div class="w3-third">
+        <div class="comp-card">
+          <img src="computer-ssd-cartoon-doodle-vector.jpg" class="comp-img">
+          <div class="comp-overlay">
+            <h5>M.2 NVMe</h5>
+            <p>The fastest modern storage. Plugs directly into the board to remove data bottlenecks.</p>
+          </div>
+        </div>
+      </div>
+      <div class="w3-third">
+        <div class="comp-card">
+          <img src="motherboard-pc-icon-doodle-hand-drawn-or-outline-icon-style-vector.jpg" class="comp-img">
+          <div class="comp-overlay">
+            <h5>Motherboard</h5>
+            <p>The central hub. Determines your CPU, RAM, and internal expansion compatibility.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="w3-padding-64 w3-content" id="services">
-    <h2 class="w3-text-light-grey">Services & Expertise</h2>
+  <div class="w3-padding-64 w3-content" id="calculator">
+    <h2 class="w3-text-light-grey">Repair & Upgrade Estimator</h2>
     <hr style="width:200px" class="w3-opacity">
-
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-col l6 m6 w3-margin-bottom">
-        <ul class="w3-ul w3-card w3-dark-grey">
-          <li class="w3-black w3-xlarge w3-padding-32">Gaming & Custom Builds</li>
-          <li class="w3-padding-16">Optimized builds for specific performance goals</li>
-          <li class="w3-padding-16">Best parts recommendations based on your games</li>
-          <li class="w3-padding-16">Full assembly and thermal stress testing</li>
-        </ul>
+    <div class="w3-container w3-card w3-dark-grey w3-padding-32">
+      <p>My Labor Rate: <b>$45/hr</b> (Minneapolis Average: $60-$90/hr).</p>
+      
+      <div class="w3-row-padding" style="margin:8px -16px;">
+        <div class="w3-half">
+          <label>Brand / Manufacturer</label>
+          <select id="brand" onchange="runCalculator()">
+            <option value="dell">Dell / Alienware</option>
+            <option value="hp">HP / Pavilion / Omen</option>
+            <option value="apple">Apple (MacBook / iMac)</option>
+            <option value="lenovo">Lenovo (ThinkPad / Legion)</option>
+            <option value="asus">ASUS / ROG</option>
+            <option value="custom">-- Custom Desktop PC --</option>
+          </select>
+        </div>
+        <div class="w3-half">
+          <label>Model Year Group</label>
+          <select id="year" onchange="runCalculator()">
+            <option value="2025">2023 - 2025</option>
+            <option value="2022">2020 - 2022</option>
+            <option value="2018">2017 - 2019</option>
+          </select>
+        </div>
       </div>
 
-      <div class="w3-col l6 m6">
-        <ul class="w3-ul w3-card w3-dark-grey">
-          <li class="w3-black w3-xlarge w3-padding-32">Repair & Maintenance</li>
-          <li class="w3-padding-16">OS Wiping & Windows Reinstallation</li>
-          <li class="w3-padding-16">Desktop & Laptop Motherboard Swaps</li>
-          <li class="w3-padding-16">Labor Rate: <b>$45 / Hour</b></li>
-        </ul>
-      </div>
-    </div>
+      <label>Service Needed</label>
+      <select id="part" onchange="runCalculator()">
+        <option value="none">-- Select Service --</option>
+        <option value="screen">Screen Replacement</option>
+        <option value="battery">Battery Replacement</option>
+        <option value="motherboard">Motherboard Swap</option>
+        <option value="storage">SSD / M.2 Upgrade</option>
+        <option value="build">Full Custom Build Service</option>
+      </select>
 
-    <div class="w3-panel w3-leftbar w3-light-grey w3-padding-16 w3-margin-top">
-      <p><i>Note: For hardware upgrades, you can purchase parts directly based on my recommendation, or I can acquire them for you (prices vary by market).</i></p>
+      <div id="calc-output" class="w3-panel w3-border w3-border-white w3-padding-16 w3-center" style="display:none;">
+        <p id="out-text">Estimated Total: <span id="out-total" class="w3-text-green"></span></p>
+        <button class="w3-button w3-small w3-blue w3-margin-bottom" onclick="addToQuote()">ADD TO QUOTE SECTION</button>
+        <div class="estimator-divider"></div>
+        <p class="w3-small" style="color:#aaa;">Note: Researched estimate. Shipping + fees may apply.</p>
+      </div>
     </div>
   </div>
 
   <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
-    <h2 class="w3-text-light-grey">Request a Consultation</h2>
+    <h2 class="w3-text-light-grey">Request a Custom Quote</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <form action="https://formspree.io/f/mwvrlqod" method="POST" enctype="multipart/form-data">
+      <input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="name">
+      <input class="w3-input w3-padding-16" type="email" placeholder="Email" required name="email">
+      
+      <input class="w3-input w3-padding-16" type="text" placeholder="Device Model (e.g. HP Envy 15-ep000)" name="model" id="model-field">
+
+      <div style="position:relative">
+        <input class="w3-input w3-padding-16" type="text" placeholder="Serial Number (Optional)" name="serial" id="serial-field">
+        <span class="tooltip" style="position:absolute; right:10px; top:18px">
+            <i class="fa fa-question-circle"></i> Where is this?
+            <span class="tooltiptext">
+                <b>Windows:</b> Settings > System > About.<br><br>
+                <b>Windows Laptop:</b> Printed on the bottom case.<br><br>
+                <b>MacBook:</b> Apple Menu () > About This Mac. If it wont turn on check the bottom casing or your Apple ID device list. <br><i>Or printed by the device stand/foot.</i>
+            </span>
+        </span>
+      </div>
+
+      <div class="w3-padding-16">
+        <label class="w3-text-light-grey">Upload Photo of Device/Issue:</label>
+        <input class="w3-input" type="file" name="upload" accept="image/*">
+      </div>
+
+      <textarea class="w3-input w3-padding-16" style="height:120px" id="message-field" placeholder="Describe your issue or custom build needs..." required name="message"></textarea>
+      <button class="w3-button w3-white w3-padding-large custom-btn" type="submit">SEND REQUEST</button>
+    </form>
+  </div>
+
+  <div class="w3-padding-64 w3-content" id="reviews">
+    <h2 class="w3-text-light-grey">Client Reviews</h2>
     <hr style="width:200px" class="w3-opacity">
     
-    <div id="success-block" class="w3-container w3-card w3-dark-grey w3-padding-32 w3-margin-bottom">
-        <h3 class="w3-text-white"><i class="fa fa-check-circle w3-text-green"></i> Request Received!</h3>
-        <p>I will review your details and reply to your email shortly.</p>
-        <button onclick="window.location.href='#home'" class="w3-button w3-light-grey w3-round">Return Home</button>
+    <div id="reviews-list">
+      <div class="review-card">
+        <div class="star-rating">
+          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
+        </div>
+        <p>"Amazing helped me figure out parts for my computer!"</p>
+        <span class="w3-text-grey">- Gershom</span>
+      </div>
+
+      <div class="review-card">
+        <div class="star-rating">
+          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+        </div>
+        <p>"He helped me build my gaming PC"</p>
+        <span class="w3-text-grey">- Cristal</span>
+      </div>
+
+      <div class="review-card">
+        <div class="star-rating">
+          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
+        </div>
+        <p>"Lo recuperé de Cedric, ahora funciona como normal por un buen precio"</p>
+        <span class="w3-text-grey">- Kevin Rochec</span>
+      </div>
     </div>
 
-    <form action="https://formspree.io/f/mwvrlqod" method="POST" id="repair-form">
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Full Name" required name="name"></p>
-      <p><input class="w3-input w3-padding-16" type="email" placeholder="Email Address" required name="email"></p>
-      <p><input class="w3-input w3-padding-16" type="tel" placeholder="Phone Number (Optional)" name="phone"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Service Needed (e.g. Gaming PC Build)" required name="service_type"></p>
-      <p><textarea class="w3-input w3-padding-16" style="height:150px" placeholder="Explain what you need or what games you want to play..." required name="message"></textarea></p>
+    <div class="w3-container w3-card w3-dark-grey w3-padding-32 w3-margin-top">
+      <h3>Leave a Review</h3>
+      <p class="w3-small">Email is required for verification.</p>
       
-      <input type="hidden" name="_subject" value="New CedBan Service Request">
-      <p><button class="w3-button w3-white w3-padding-large custom-btn" type="submit">SEND REQUEST</button></p>
-    </form>
+      <div class="w3-padding-16">
+        <span class="w3-text-grey">Rating: </span>
+        <span id="star-selector">
+          <i class="fa fa-star star-input" onclick="setRating(1)"></i>
+          <i class="fa fa-star star-input" onclick="setRating(2)"></i>
+          <i class="fa fa-star star-input" onclick="setRating(3)"></i>
+          <i class="fa fa-star star-input" onclick="setRating(4)"></i>
+          <i class="fa fa-star star-input" onclick="setRating(5)"></i>
+        </span>
+      </div>
 
-    <div class="w3-section">
-      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Minnesota, US</p>
+      <input class="w3-input w3-padding-16" type="text" id="review-name" placeholder="Your Name" required>
+      <input class="w3-input w3-padding-16" type="email" id="review-email" placeholder="Your Email" required title="Email is required to post a review">
+      <textarea class="w3-input w3-padding-16" style="height:100px" id="review-text" placeholder="Write your review here..." required></textarea>
+      <button class="w3-button w3-blue w3-padding-large" onclick="submitReview()">POST REVIEW</button>
+    </div>
+  </div>
+
+  <div class="w3-padding-64 w3-content" id="payments">
+    <h2 class="w3-text-light-grey">Accepted Payments</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col l6 m12 w3-center">
+        <img src="payments.jpg" alt="Accepted Payments" class="w3-image w3-round" style="max-width:300px">
+      </div>
+      <div class="w3-col l6 m12 w3-left-align w3-padding">
+        <p class="w3-large">For your convenience, I accept payments through common digital services:</p>
+        <p>
+          <span class="w3-text-green w3-xlarge"><b>Cash App:</b></span><br>
+          <span class="w3-xxlarge"><b>$CedBan</b></span>
+        </p>
+        <p>
+          <span class="w3-text-blue w3-xlarge"><b>Venmo:</b></span><br>
+          <span class="w3-xxlarge"><b>@CedBan</b></span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-content w3-padding-64" id="about">
+    <h2 class="w3-text-light-grey">About Me</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+        <p>I am an IT Infrastructure student at the University of Minnesota focusing on Security and Systems Administration. As a dedicated IT professional, I specialize in the physical and digital health of computer systems. My experience ranges from complex custom gaming rigs to intricate laptop hardware repairs.</p>
+        <p>I believe in transparent pricing and high-performance standards. Whether it's a 2017 legacy machine or a 2025 cutting-edge build, I ensure every system leaves my bench optimized for longevity and speed. My approach combines academic knowledge of network security with hands-on mechanical expertise to deliver reliable hardware solutions.</p>
+      </div>
+      <div class="w3-half">
+        <div class="w3-row">
+          <div class="w3-col s6" style="padding:5px">
+            <img src="IMG_7653.jpg" style="width:100%; border-radius:4px" alt="Repair Work">
+          </div>
+          <div class="w3-col s6" style="padding:5px">
+            <img src="SO_06878(1).jpg" style="width:100%; border-radius:4px" alt="Portrait">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <footer class="w3-content w3-padding-64 w3-text-grey w3-center">
-    <p class="w3-medium">© 2026 CedBan Solutions</p>
+    <p>© 2026 CedBan Solutions | Minneapolis, MN</p>
   </footer>
 </div>
 
 <script>
-  // Script to show success message if redirected with ?success=true
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.has('success')) {
-      document.getElementById('repair-form').style.display = 'none';
-      document.getElementById('success-block').style.display = 'block';
+  let currentRating = 0;
+
+  function setRating(n) {
+    currentRating = n;
+    const stars = document.querySelectorAll('.star-input');
+    stars.forEach((star, index) => {
+      star.classList.toggle('active', index < n);
+    });
+  }
+
+  function submitReview() {
+    const name = document.getElementById("review-name").value;
+    const email = document.getElementById("review-email").value;
+    const text = document.getElementById("review-text").value;
+
+    if (!email || !name || !text || currentRating === 0) {
+      alert("Please fill in all fields (Name, Email, Review) and select a star rating.");
+      return;
+    }
+
+    const reviewList = document.getElementById("reviews-list");
+    const div = document.createElement("div");
+    div.className = "review-card";
+    
+    let starsHtml = '';
+    for(let i=0; i<5; i++) {
+      starsHtml += `<i class="fa fa-star${i < currentRating ? '' : '-o'}"></i>`;
+    }
+
+    div.innerHTML = `
+      <div class="star-rating">${starsHtml}</div>
+      <p>"${text}"</p>
+      <span class="w3-text-grey">- ${name}</span>
+    `;
+
+    reviewList.appendChild(div);
+    
+    // Clear form
+    document.getElementById("review-name").value = "";
+    document.getElementById("review-email").value = "";
+    document.getElementById("review-text").value = "";
+    setRating(0);
+  }
+
+  function runCalculator() {
+    const brand = document.getElementById("brand").value;
+    const year = parseInt(document.getElementById("year").value);
+    const part = document.getElementById("part").value;
+    const output = document.getElementById("calc-output");
+    
+    if (part === "none") { output.style.display = "none"; return; }
+
+    if (brand === "custom" && part === "build") {
+      document.getElementById("out-total").innerHTML = "<b>Consult Required</b>";
+      document.getElementById("out-text").innerHTML = "Custom builds vary. Please use the <a href='#contact' style='color:#fff'>Quote Section</a>.";
+      output.style.display = "block";
+      return;
+    }
+
+    let laborHours = 1.5;
+    let basePart = 0;
+    switch(part) {
+      case "screen": laborHours = 2; basePart = (brand === "apple") ? 350 : 170; break;
+      case "battery": laborHours = 1; basePart = (brand === "apple") ? 115 : 75; break;
+      case "motherboard": laborHours = 4; basePart = (brand === "apple") ? 600 : 300; break;
+      case "storage": laborHours = 1; basePart = 90; break;
+      case "build": laborHours = 5; basePart = 0; break;
+    }
+
+    const ageMultiplier = (year >= 2023) ? 1.3 : (year >= 2020 ? 1.0 : 0.75);
+    const finalTotal = (laborHours * 45) + Math.round(basePart * ageMultiplier);
+    document.getElementById("out-total").innerText = "$" + finalTotal;
+    output.style.display = "block";
+  }
+
+  function addToQuote() {
+    const brandText = document.getElementById("brand").options[document.getElementById("brand").selectedIndex].text;
+    const yearText = document.getElementById("year").options[document.getElementById("year").selectedIndex].text;
+    const serviceText = document.getElementById("part").options[document.getElementById("part").selectedIndex].text;
+    const estimate = document.getElementById("out-total").innerText;
+    
+    document.getElementById("model-field").value = brandText + " (" + yearText + ")";
+    document.getElementById("message-field").value = `I'm interested in a ${serviceText}. Estimate shown: ${estimate}. [Add more details...]`;
+    document.getElementById("contact").scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function toggleMobileNav() {
+    var x = document.getElementById("mobileNav");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else { 
+      x.className = x.className.replace(" w3-show", "");
+    }
   }
 </script>
 
