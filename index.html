@@ -10,6 +10,41 @@
 
 <style>
   body, h1, h2, h3, h4, h5, h6 {font-family: "Montserrat", sans-serif}
+  
+  /* FLASHLIGHT BACKGROUND LOGIC */
+  body {
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+  }
+
+  .bg-reveal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Keeps it behind your content */
+    background-image: url('motherboard.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  /* The dark mask that hides the motherboard */
+  .bg-reveal-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    /* This creates the 'hole' for the flashlight */
+    mask-image: radial-gradient(circle 150px at var(--x, 50%) var(--y, 50%), transparent 0%, black 100%);
+    -webkit-mask-image: radial-gradient(circle 150px at var(--x, 50%) var(--y, 50%), transparent 0%, black 100%);
+  }
+
+  /* REST OF YOUR STYLES UNCHANGED */
   .w3-row-padding img {margin-bottom: 12px}
   .w3-sidebar {width: 120px;background: #111;}
   #main {margin-left: 120px}
@@ -23,18 +58,54 @@
     padding: 12px;
   }
   
-  .comparison-container {
+  .gallery-container {
     display: flex;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 20px;
     justify-content: center;
-    margin-bottom: 20px;
+    padding: 20px 0;
   }
-  .comparison-img-wrapper { width: 40%; text-align: center; }
-  .comparison-img {
-    width: 100%; 
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+
+  .repair-card {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  .repair-img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.5s;
+  }
+
+  .repair-card:hover .repair-img {
+    transform: scale(1.1);
+  }
+
+  .hover-bubble {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: white;
+    color: black;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .repair-card:hover .hover-bubble {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .spec-label { 
@@ -46,7 +117,6 @@
     margin: auto;
   }
 
-  /* Tooltip for Serial Number */
   .tooltip { position: relative; display: inline-block; cursor: pointer; color: #2196F3; margin-left: 5px; }
   .tooltip .tooltiptext {
     visibility: hidden;
@@ -69,10 +139,8 @@
   }
   .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
 
-  /* Visual Divider for Estimator */
   .estimator-divider { border-top: 2px solid #555; width: 60px; margin: 15px auto; }
 
-  /* Component Explorer Hover */
   .comp-card {
     position: relative;
     overflow: hidden;
@@ -99,7 +167,6 @@
   .comp-card:hover .comp-overlay { bottom: 0; }
   .comp-overlay p { font-size: 17px; line-height: 1.5; }
 
-  /* Star Rating Styles */
   .star-rating { color: #f1c40f; font-size: 18px; margin-bottom: 10px; }
   .review-card { background: #1a1a1a; padding: 20px; border-left: 4px solid #2196F3; margin-bottom: 20px; }
   .star-input { font-size: 24px; cursor: pointer; color: #444; }
@@ -108,13 +175,20 @@
   @media only screen and (max-width: 600px) {
     #main {margin-left: 0}
     .w3-sidebar {display: none;}
-    .comparison-container { flex-direction: column; align-items: center; }
-    .comparison-img-wrapper { width: 85%; }
+    .repair-card { width: 100%; height: 350px; }
+    .bg-reveal-mask {
+       mask-image: radial-gradient(circle 100px at var(--x, 50%) var(--y, 50%), transparent 0%, black 100%);
+       -webkit-mask-image: radial-gradient(circle 100px at var(--x, 50%) var(--y, 50%), transparent 0%, black 100%);
+    }
   }
 </style>
 </head>
 
 <body class="w3-black">
+
+<div class="bg-reveal-container">
+  <div class="bg-reveal-mask" id="flashlight"></div>
+</div>
 
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
   <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
@@ -155,42 +229,51 @@
 
 <div class="w3-padding-large" id="main">
 
-  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+  <header class="w3-container w3-padding-32 w3-center" style="background:transparent" id="home">
     <img src="98a78e62-4c8c-491a-a720-a3c9ecb446e5.jpg" alt="CedBan Circuit Logo" style="width:300px; border-radius: 8px; margin-bottom: 15px;">
     <p class="w3-large">IT Infrastructure & Hardware Specialist | Minneapolis, MN</p>
   </header>
 
   <div class="w3-content w3-padding-64" id="projects">
     <h2 class="w3-text-light-grey">Recent Work & Repairs</h2>
+    <p class="w3-text-grey">Tap or hover for more information</p>
     <hr style="width:200px" class="w3-opacity">
     
-    <div class="w3-container w3-margin-bottom w3-center">
-      <div class="comparison-container">
-        <div class="comparison-img-wrapper"><img src="IMG_5732.jpg" class="comparison-img" alt="Mid Tier On"></div>
-        <div class="comparison-img-wrapper"><img src="IMG_5731.jpg" class="comparison-img" alt="Mid Tier Off"></div>
-      </div>
-      <p class="spec-label"><b>Personal Mid-Tier Build:</b> Side-by-side visuals of my primary system. <br> Specs: Ryzen 5600x | MSI 3070 GPU | 32GB RAM | 1TB M.2 SSD.</p>
-    </div>
-
-    <div class="w3-container w3-margin-bottom w3-center">
-      <div class="comparison-container">
-        <div class="comparison-img-wrapper"><img src="IMG_5730.jpg" class="comparison-img" alt="Low Tier On"></div>
-        <div class="comparison-img-wrapper"><img src="IMG_5729.jpg" class="comparison-img" alt="Low Tier Off"></div>
-      </div>
-      <p class="spec-label"><b>Budget Tier Build:</b> Visual contrast of a cost-effective build optimized for 1080p. <br> Specs: RTX 970 | Ryzen 1600 | 16GB RAM.</p>
-    </div>
-
-    <div class="w3-container w3-margin-bottom w3-center">
-      <div class="comparison-container">
-        <div class="comparison-img-wrapper">
-            <b class="w3-text-green">AFTER</b>
-            <img src="IMG_5704 (1).jpg" class="comparison-img" alt="Laptop Finished">
-        </div>
-        <div class="comparison-img-wrapper">
-            <b class="w3-text-red">BEFORE</b>
-            <img src="IMG_5695.jpg" class="comparison-img" alt="Motherboard Work">
+    <div class="gallery-container">
+      <div class="repair-card">
+        <img src="IMG_5732.jpg" class="repair-img" alt="Mid Tier Build">
+        <div class="hover-bubble">
+          <b>Personal Mid-Tier Build:</b> Side-by-side visuals of my primary system. <br> 
+          Specs: Ryzen 5600x | MSI 3070 GPU | 32GB RAM | 1TB M.2 SSD.
         </div>
       </div>
+
+      <div class="repair-card">
+        <img src="IMG_5730.jpg" class="repair-img" alt="Budget Tier Build">
+        <div class="hover-bubble">
+          <b>Budget Tier Build:</b> Visual contrast of a cost-effective build optimized for 1080p. <br> 
+          Specs: RTX 970 | Ryzen 1600 | 16GB RAM.
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-container">
+      <div class="repair-card">
+        <img src="IMG_5695.jpg" class="repair-img" alt="Motherboard Work Before">
+        <div class="hover-bubble">
+          <b class="w3-text-red">BEFORE:</b> It did not turn on unless it was plugged in and the battery was not charging.
+        </div>
+      </div>
+
+      <div class="repair-card">
+        <img src="IMG_5704 (1).jpg" class="repair-img" alt="Laptop Finished After">
+        <div class="hover-bubble">
+          <b class="w3-text-green">AFTER:</b> The motherboard swap fixed the charging issue and the laptop.
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container w3-margin-top w3-center">
       <p class="spec-label"><b>HP ENVY X360 Motherboard Swap:</b> Full logic board replacement for a 2019 chassis. This repair involved migrating the CPU cooling assembly and stress-testing the power rail stability to restore factory-standard performance.</p>
     </div>
   </div>
@@ -372,7 +455,7 @@
           <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
         </div>
         <p>"Lo recuperé de Cedric, ahora funciona como normal por un buen precio"</p>
-        <span class="w3-text-grey">- Kevin Rochec</span>
+        <span class="w3-text-grey">- Kevin Rochac</span>
       </div>
     </div>
 
@@ -446,6 +529,22 @@
 </div>
 
 <script>
+  /* FLASHLIGHT POSITIONING SCRIPT */
+  const flashlight = document.getElementById('flashlight');
+  
+  // Update position on Mouse Move
+  window.addEventListener('mousemove', e => {
+    flashlight.style.setProperty('--x', e.clientX + 'px');
+    flashlight.style.setProperty('--y', e.clientY + 'px');
+  });
+
+  // Update position on Touch (Mobile/Tablet)
+  window.addEventListener('touchmove', e => {
+    const touch = e.touches[0];
+    flashlight.style.setProperty('--x', touch.clientX + 'px');
+    flashlight.style.setProperty('--y', touch.clientY + 'px');
+  });
+
   let currentRating = 0;
 
   function setRating(n) {
