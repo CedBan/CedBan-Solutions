@@ -43,8 +43,12 @@
   }
 
   .w3-row-padding img {margin-bottom: 12px}
-  .w3-sidebar {width: 120px;background: #111;}
-  #main {margin-left: 120px}
+  
+  /* SIDEBAR REFINEMENT: Smaller padding/icons to prevent scrollbar */
+  .w3-sidebar {width: 115px;background: #111; overflow: hidden;}
+  .w3-sidebar a {padding: 8px !important;}
+  .w3-sidebar i {font-size: 24px !important;}
+  #main {margin-left: 115px}
   
   .w3-input, select {
     border: 1px solid #555 !important;
@@ -231,19 +235,21 @@
     <p>HOME</p>
   </a>
   <a href="#projects" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-desktop w3-xxlarge"></i><p>WORK</p></a>
+    <i class="fa fa-desktop"></i><p>WORK</p></a>
   <a href="#building" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-cubes w3-xxlarge"></i><p>BUILDING</p></a>
+    <i class="fa fa-cubes"></i><p>BUILDING</p></a>
+  <a href="#security" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+    <i class="fa fa-shield"></i><p>SECURITY</p></a>
   <a href="#calculator" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-calculator w3-xxlarge"></i><p>ESTIMATOR</p></a>
+    <i class="fa fa-calculator"></i><p>ESTIMATOR</p></a>
   <a href="#reviews" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-star w3-xxlarge"></i><p>REVIEWS</p></a>
+    <i class="fa fa-star"></i><p>REVIEWS</p></a>
   <a href="#payments" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-credit-card w3-xxlarge"></i><p>PAYMENT</p></a>
+    <i class="fa fa-credit-card"></i><p>PAYMENT</p></a>
   <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-user w3-xxlarge"></i><p>ABOUT</p></a>
+    <i class="fa fa-user"></i><p>ABOUT</p></a>
   <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-envelope w3-xxlarge"></i><p>CONTACT</p></a>
+    <i class="fa fa-envelope"></i><p>CONTACT</p></a>
 </nav>
 
 <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
@@ -254,6 +260,7 @@
     <a href="#" class="w3-bar-item w3-button" onclick="toggleMobileNav()">HOME</a>
     <a href="#projects" class="w3-bar-item w3-button" onclick="toggleMobileNav()">WORK</a>
     <a href="#building" class="w3-bar-item w3-button" onclick="toggleMobileNav()">BUILDING</a>
+    <a href="#security" class="w3-bar-item w3-button" onclick="toggleMobileNav()">SECURITY</a>
     <a href="#calculator" class="w3-bar-item w3-button" onclick="toggleMobileNav()">ESTIMATOR</a>
     <a href="#reviews" class="w3-bar-item w3-button" onclick="toggleMobileNav()">REVIEWS</a>
     <a href="#payments" class="w3-bar-item w3-button" onclick="toggleMobileNav()">PAYMENT</a>
@@ -386,6 +393,29 @@
     </div>
   </div>
 
+  <div class="w3-padding-64 w3-content" id="security">
+    <h2 class="w3-text-light-grey">Virus Removal & Security</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col l6 m12 w3-center" style="display: flex; align-items: center; justify-content: center; min-height: 350px;">
+        <img src="virus.jpg" alt="Antivirus Security" class="w3-image w3-round-large" style="max-width:300px; width: 100%; height: auto;">
+      </div>
+      <div class="w3-col l6 m12 w3-padding">
+        <h3 class="w3-text-red">Clean, Protect, & Accelerate</h3>
+        <p class="w3-large">Hardware repair is only half the battle. Digital "clutter" and hidden threats are the leading causes of system slowdowns.</p>
+        <div class="w3-padding-large" style="background: rgba(26, 26, 26, 0.8); border: 1px solid #555; border-radius: 30px;">
+          <p><b>The Security Suite ($15 Flat Fee):</b></p>
+          <ul class="w3-ul w3-border-0">
+            <li><b class="w3-text-red">Bitdefender:</b> Top-tier real-time protection to prevent future infections.</li>
+            <li><b class="w3-text-blue">Malwarebytes:</b> Deep-system scanning to strip away existing threats.</li>
+            <li><b>Safe Deployment:</b> Guaranteed safe installation with zero data risk.</li>
+          </ul>
+        </div>
+        <p class="w3-small w3-text-grey w3-margin-top">*This stagnant fee covers professional installation and initial optimization. Perfect for restoring factory-speed to a laggy PC.</p>
+      </div>
+    </div>
+  </div>
+
   <div class="w3-padding-64 w3-content" id="calculator">
     <h2 class="w3-text-light-grey">Repair & Upgrade Estimator</h2>
     <hr style="width:200px" class="w3-opacity">
@@ -421,6 +451,7 @@
         <option value="battery">Battery Replacement</option>
         <option value="motherboard">Motherboard Swap</option>
         <option value="storage">SSD / M.2 Upgrade</option>
+        <option value="antivirus">Virus Removal & Protection</option>
         <option value="build">Full Custom Build Service</option>
       </select>
 
@@ -630,6 +661,14 @@
       return;
     }
 
+    // Antivirus logic: Stagnant $15 price
+    if (part === "antivirus") {
+      document.getElementById("out-total").innerText = "$15";
+      document.getElementById("out-text").innerHTML = "Estimated Total (Stagnant Fee): <span id='out-total' class='w3-text-green'>$15</span>";
+      output.style.display = "block";
+      return;
+    }
+
     let laborHours = 1.5;
     let basePart = 0;
     switch(part) {
@@ -642,6 +681,7 @@
 
     const ageMultiplier = (year >= 2023) ? 1.3 : (year >= 2020 ? 1.0 : 0.75);
     const finalTotal = (laborHours * 45) + Math.round(basePart * ageMultiplier);
+    document.getElementById("out-text").innerHTML = 'Estimated Total: <span id="out-total" class="w3-text-green"></span>';
     document.getElementById("out-total").innerText = "$" + finalTotal;
     output.style.display = "block";
   }
