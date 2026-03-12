@@ -24,14 +24,13 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Keeps it behind your content */
+    z-index: -1; 
     background-image: url('motherboard.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
   }
 
-  /* The dark mask that hides the motherboard */
   .bg-reveal-mask {
     position: absolute;
     top: 0;
@@ -39,12 +38,10 @@
     width: 100%;
     height: 100%;
     background: black;
-    /* This creates the 'hole' for the flashlight */
     mask-image: radial-gradient(circle 150px at var(--x, 50%) var(--y, 50%), transparent 0%, black 100%);
     -webkit-mask-image: radial-gradient(circle 150px at var(--x, 50%) var(--y, 50%), transparent 0%, black 100%);
   }
 
-  /* REST OF YOUR STYLES UNCHANGED */
   .w3-row-padding img {margin-bottom: 12px}
   .w3-sidebar {width: 120px;background: #111;}
   #main {margin-left: 120px}
@@ -56,6 +53,7 @@
     margin-bottom: 15px;
     width: 100%;
     padding: 12px;
+    border-radius: 15px;
   }
   
   .gallery-container {
@@ -148,6 +146,7 @@
     border: 1px solid #333;
     margin-bottom: 20px;
     height: 300px;
+    border-radius: 20px;
   }
   .comp-img { width: 100%; height: 100%; object-fit: contain; padding: 25px; transition: 0.5s; }
   .comp-overlay {
@@ -168,9 +167,45 @@
   .comp-overlay p { font-size: 17px; line-height: 1.5; }
 
   .star-rating { color: #f1c40f; font-size: 18px; margin-bottom: 10px; }
-  .review-card { background: #1a1a1a; padding: 20px; border-left: 4px solid #2196F3; margin-bottom: 20px; }
   .star-input { font-size: 24px; cursor: pointer; color: #444; }
   .star-input.active { color: #f1c40f; }
+
+  .review-card { 
+    background: rgba(26, 26, 26, 0.8); 
+    padding: 40px; 
+    border: 1px solid #555; 
+    border-radius: 30px;
+    margin-bottom: 30px; 
+    text-align: center;
+  }
+  
+  .review-form-container {
+    background: rgba(40, 40, 40, 0.6);
+    padding: 40px;
+    border: 1px solid #777;
+    border-radius: 30px;
+    margin-top: 40px;
+  }
+
+  #calculator .w3-card { border-radius: 20px; }
+
+  /* Progress Bar Styling */
+  .progress-container {
+    background-color: #333;
+    border-radius: 10px;
+    margin: 20px 0;
+    overflow: hidden;
+  }
+  .progress-bar {
+    background-color: #2196F3;
+    height: 20px;
+    width: 20%; /* Represents 1/5 */
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    font-size: 12px;
+    transition: width 0.5s;
+  }
 
   @media only screen and (max-width: 600px) {
     #main {margin-left: 0}
@@ -389,9 +424,9 @@
         <option value="build">Full Custom Build Service</option>
       </select>
 
-      <div id="calc-output" class="w3-panel w3-border w3-border-white w3-padding-16 w3-center" style="display:none;">
+      <div id="calc-output" class="w3-panel w3-border w3-border-white w3-padding-16 w3-center" style="display:none; border-radius: 15px;">
         <p id="out-text">Estimated Total: <span id="out-total" class="w3-text-green"></span></p>
-        <button class="w3-button w3-small w3-blue w3-margin-bottom" onclick="addToQuote()">ADD TO QUOTE SECTION</button>
+        <button class="w3-button w3-small w3-blue w3-margin-bottom w3-round-large" onclick="addToQuote()">ADD TO QUOTE SECTION</button>
         <div class="estimator-divider"></div>
         <p class="w3-small" style="color:#aaa;">Note: Researched estimate. Shipping + fees may apply.</p>
       </div>
@@ -400,6 +435,14 @@
 
   <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
     <h2 class="w3-text-light-grey">Request a Custom Quote</h2>
+    
+    <div class="w3-center">
+      <p class="w3-text-grey w3-small" style="margin-bottom: 5px;">Project Availability: 1 / 5 Slots Filled</p>
+      <div class="progress-container">
+        <div class="progress-bar">1/5</div>
+      </div>
+    </div>
+
     <hr style="width:200px" class="w3-opacity">
     <form action="https://formspree.io/f/mwvrlqod" method="POST">
       <input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="name">
@@ -420,7 +463,7 @@
       </div>
 
       <textarea class="w3-input w3-padding-16" style="height:120px" id="message-field" placeholder="Describe your issue. To send photos, please include a Google Drive link here or simply reply with pictures once I email you back!" required name="message"></textarea>
-      <button class="w3-button w3-white w3-padding-large custom-btn" type="submit">SEND REQUEST</button>
+      <button class="w3-button w3-white w3-padding-large w3-round-large custom-btn" type="submit">SEND REQUEST</button>
     </form>
   </div>
 
@@ -430,49 +473,51 @@
     
     <div id="reviews-list">
       <div class="review-card">
+        <p class="w3-large">"Amazing helped me figure out parts for my computer!"</p>
         <div class="star-rating">
           <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
         </div>
-        <p>"Amazing helped me figure out parts for my computer!"</p>
-        <span class="w3-text-grey">- Gershom</span>
+        <span class="w3-text-grey">- Gershom -</span>
       </div>
 
       <div class="review-card">
+        <p class="w3-large">"He helped me build my gaming PC"</p>
         <div class="star-rating">
           <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
         </div>
-        <p>"He helped me build my gaming PC"</p>
-        <span class="w3-text-grey">- Cristal</span>
+        <span class="w3-text-grey">- Cristal -</span>
       </div>
 
       <div class="review-card">
+        <p class="w3-large">"Lo recuperé de Cedric, ahora funciona como normal por un buen precio"</p>
         <div class="star-rating">
           <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
         </div>
-        <p>"Lo recuperé de Cedric, ahora funciona como normal por un buen precio"</p>
-        <span class="w3-text-grey">- Kevin Rochac</span>
+        <span class="w3-text-grey">- Kevin Rochac -</span>
       </div>
     </div>
 
-    <div class="w3-container w3-card w3-dark-grey w3-padding-32 w3-margin-top">
-      <h3>Leave a Review</h3>
-      <p class="w3-small">Email is required for verification.</p>
-      
-      <div class="w3-padding-16">
-        <span class="w3-text-grey">Rating: </span>
-        <span id="star-selector">
-          <i class="fa fa-star star-input" onclick="setRating(1)"></i>
-          <i class="fa fa-star star-input" onclick="setRating(2)"></i>
-          <i class="fa fa-star star-input" onclick="setRating(3)"></i>
-          <i class="fa fa-star star-input" onclick="setRating(4)"></i>
-          <i class="fa fa-star star-input" onclick="setRating(5)"></i>
-        </span>
-      </div>
+    <div class="review-form-container">
+      <form id="review-form" class="w3-center">
+        <h3 class="w3-text-light-grey">Leave a Review</h3>
+        <p class="w3-small w3-text-grey">Posting will open your email app to send the review to me.</p>
+        
+        <div class="w3-padding-16">
+          <span id="star-selector">
+            <i class="fa fa-star star-input" onclick="setRating(1)"></i>
+            <i class="fa fa-star star-input" onclick="setRating(2)"></i>
+            <i class="fa fa-star star-input" onclick="setRating(3)"></i>
+            <i class="fa fa-star star-input" onclick="setRating(4)"></i>
+            <i class="fa fa-star star-input" onclick="setRating(5)"></i>
+          </span>
+          <input type="hidden" id="rating-value" value="0">
+        </div>
 
-      <input class="w3-input w3-padding-16" type="text" id="review-name" placeholder="Your Name" required>
-      <input class="w3-input w3-padding-16" type="email" id="review-email" placeholder="Your Email" required title="Email is required to post a review">
-      <textarea class="w3-input w3-padding-16" style="height:100px" id="review-text" placeholder="Write your review here..." required></textarea>
-      <button class="w3-button w3-blue w3-padding-large" onclick="submitReview()">POST REVIEW</button>
+        <input class="w3-input w3-padding-16" type="text" id="review-name" placeholder="Your Name" required>
+        <textarea class="w3-input w3-padding-16" style="height:100px" id="review-text" placeholder="Write your review here..." required></textarea>
+        
+        <button class="w3-button w3-blue w3-padding-large w3-round-large" type="button" onclick="submitReview()">POST REVIEW</button>
+      </form>
     </div>
   </div>
 
@@ -481,7 +526,7 @@
     <hr style="width:200px" class="w3-opacity">
     <div class="w3-row w3-padding-32">
       <div class="w3-col l6 m12 w3-center">
-        <img src="payments.jpg" alt="Accepted Payments" class="w3-image w3-round" style="max-width:300px">
+        <img src="payments.jpg" alt="Accepted Payments" class="w3-image w3-round-large" style="max-width:300px">
       </div>
       <div class="w3-col l6 m12 w3-left-align w3-padding">
         <p class="w3-large">For your convenience, I accept payments through common digital services:</p>
@@ -508,10 +553,10 @@
       <div class="w3-half">
         <div class="w3-row">
           <div class="w3-col s6" style="padding:5px">
-            <img src="IMG_7653.jpg" style="width:100%; border-radius:4px" alt="Repair Work">
+            <img src="IMG_7653.jpg" style="width:100%; border-radius:25px" alt="Repair Work">
           </div>
           <div class="w3-col s6" style="padding:5px">
-            <img src="cedric.JPG" style="width:100%; border-radius:4px" alt="Portrait">
+            <img src="cedric.JPG" style="width:100%; border-radius:25px" alt="Portrait">
           </div>
         </div>
       </div>
@@ -527,13 +572,11 @@
   /* FLASHLIGHT POSITIONING SCRIPT */
   const flashlight = document.getElementById('flashlight');
   
-  // Update position on Mouse Move
   window.addEventListener('mousemove', e => {
     flashlight.style.setProperty('--x', e.clientX + 'px');
     flashlight.style.setProperty('--y', e.clientY + 'px');
   });
 
-  // Update position on Touch (Mobile/Tablet)
   window.addEventListener('touchmove', e => {
     const touch = e.touches[0];
     flashlight.style.setProperty('--x', touch.clientX + 'px');
@@ -544,6 +587,7 @@
 
   function setRating(n) {
     currentRating = n;
+    document.getElementById("rating-value").value = n;
     const stars = document.querySelectorAll('.star-input');
     stars.forEach((star, index) => {
       star.classList.toggle('active', index < n);
@@ -552,34 +596,21 @@
 
   function submitReview() {
     const name = document.getElementById("review-name").value;
-    const email = document.getElementById("review-email").value;
     const text = document.getElementById("review-text").value;
 
-    if (!email || !name || !text || currentRating === 0) {
-      alert("Please fill in all fields (Name, Email, Review) and select a star rating.");
+    if (!name || !text || currentRating === 0) {
+      alert("Please fill in your name, review text, and a star rating.");
       return;
     }
 
-    const reviewList = document.getElementById("reviews-list");
-    const div = document.createElement("div");
-    div.className = "review-card";
+    const subject = encodeURIComponent("New Website Review from " + name);
+    const body = encodeURIComponent(`Reviewer: ${name}\nRating: ${currentRating}/5 Stars\n\nReview:\n${text}`);
     
-    let starsHtml = '';
-    for(let i=0; i<5; i++) {
-      starsHtml += `<i class="fa fa-star${i < currentRating ? '' : '-o'}"></i>`;
-    }
+    window.location.href = `mailto:cedricbanzeba@gmail.com?subject=${subject}&body=${body}`;
 
-    div.innerHTML = `
-      <div class="star-rating">${starsHtml}</div>
-      <p>"${text}"</p>
-      <span class="w3-text-grey">- ${name}</span>
-    `;
-
-    reviewList.appendChild(div);
+    alert("Opening your email app to send the review! Once I receive it, I will manually add it to the site. Thanks, Baledi.");
     
-    // Clear form
     document.getElementById("review-name").value = "";
-    document.getElementById("review-email").value = "";
     document.getElementById("review-text").value = "";
     setRating(0);
   }
