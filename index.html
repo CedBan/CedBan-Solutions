@@ -44,7 +44,7 @@
 
   .w3-row-padding img {margin-bottom: 12px}
   
-  /* SIDEBAR REFINEMENT: Smaller padding/icons to prevent scrollbar */
+  /* SIDEBAR REFINEMENT */
   .w3-sidebar {width: 115px;background: #111; overflow: hidden;}
   .w3-sidebar a {padding: 8px !important;}
   .w3-sidebar i {font-size: 24px !important;}
@@ -193,7 +193,6 @@
 
   #calculator .w3-card { border-radius: 20px; }
 
-  /* Progress Bar Styling */
   .progress-container {
     background-color: #333;
     border-radius: 10px;
@@ -203,16 +202,13 @@
   .progress-bar {
     background-color: #2196F3;
     height: 20px;
-    width: 20%; /* Represents 1/5 */
+    width: 20%;
     text-align: center;
     line-height: 20px;
     color: white;
     font-size: 12px;
     transition: width 0.5s;
   }
-
-  /* Required Asterisk Style */
-  .req-star { color: #f44336; }
 
   @media only screen and (max-width: 600px) {
     #main {margin-left: 0}
@@ -234,7 +230,7 @@
 
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
   <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
-    <img src="8d80513b-758b-411c-a72c-84ec6b742999.jpg" alt="CedBan Circuit Logo" style="width:100%; border-radius: 8px;">
+    <img src="8d80513b-758b-411c-a72c-84ec6b742999.jpg" alt="Logo" style="width:100%; border-radius: 8px;">
     <p>HOME</p>
   </a>
   <a href="#projects" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
@@ -255,27 +251,10 @@
     <i class="fa fa-envelope"></i><p>CONTACT</p></a>
 </nav>
 
-<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
-  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <button class="w3-bar-item w3-button w3-right" onclick="toggleMobileNav()"><i class="fa fa-bars"></i></button>
-  </div>
-  <div id="mobileNav" class="w3-bar-block w3-black w3-hide w3-center">
-    <a href="#" class="w3-bar-item w3-button" onclick="toggleMobileNav()">HOME</a>
-    <a href="#projects" class="w3-bar-item w3-button" onclick="toggleMobileNav()">WORK</a>
-    <a href="#building" class="w3-bar-item w3-button" onclick="toggleMobileNav()">BUILDING</a>
-    <a href="#security" class="w3-bar-item w3-button" onclick="toggleMobileNav()">SECURITY</a>
-    <a href="#calculator" class="w3-bar-item w3-button" onclick="toggleMobileNav()">ESTIMATOR</a>
-    <a href="#reviews" class="w3-bar-item w3-button" onclick="toggleMobileNav()">REVIEWS</a>
-    <a href="#payments" class="w3-bar-item w3-button" onclick="toggleMobileNav()">PAYMENT</a>
-    <a href="#about" class="w3-bar-item w3-button" onclick="toggleMobileNav()">ABOUT</a>
-    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleMobileNav()">CONTACT</a>
-  </div>
-</div>
-
 <div class="w3-padding-large" id="main">
 
   <header class="w3-container w3-padding-32 w3-center" style="background:transparent" id="home">
-    <img src="8d80513b-758b-411c-a72c-84ec6b742999.jpg" alt="CedBan Circuit Logo" style="width:300px; border-radius: 8px; margin-bottom: 15px;">
+    <img src="8d80513b-758b-411c-a72c-84ec6b742999.jpg" alt="Logo" style="width:300px; border-radius: 8px; margin-bottom: 15px;">
     <p class="w3-large">IT Infrastructure & Hardware Specialist | Minneapolis, MN</p>
   </header>
 
@@ -304,14 +283,14 @@
 
     <div class="gallery-container">
       <div class="repair-card">
-        <img src="IMG_5695.jpg" class="repair-img" alt="Motherboard Work Before">
+        <img src="IMG_5695.jpg" class="repair-img" alt="Before">
         <div class="hover-bubble">
           <b class="w3-text-red">BEFORE:</b> It did not turn on unless it was plugged in and the battery was not charging.
         </div>
       </div>
 
       <div class="repair-card">
-        <img src="IMG_5704 (1).jpg" class="repair-img" alt="Laptop Finished After">
+        <img src="IMG_5704 (1).jpg" class="repair-img" alt="After">
         <div class="hover-bubble">
           <b class="w3-text-green">AFTER:</b> The motherboard swap fixed the charging issue and the laptop.
         </div>
@@ -321,6 +300,12 @@
     <div class="w3-container w3-margin-top w3-center">
       <p class="spec-label"><b>HP ENVY X360 Motherboard Swap:</b> Full logic board replacement for a 2019 chassis. This repair involved migrating the CPU cooling assembly and stress-testing the power rail stability to restore factory-standard performance.</p>
     </div>
+
+    <div class="w3-center w3-padding-32">
+      <a href="refurbished.html" class="w3-button w3-blue w3-round-xxlarge w3-padding-large" style="font-weight:bold; letter-spacing: 1px;">
+        <i class="fa fa-shopping-cart"></i> VIEW REFURBISHED DEALS
+      </a>
+    </div>
   </div>
 
   <div class="w3-padding-64 w3-content" id="building">
@@ -328,9 +313,9 @@
     <hr style="width:200px" class="w3-opacity">
     
     <div class="w3-row-padding w3-center" style="margin-bottom:8px">
-      <div class="w3-third"><h3 class="w3-text-green">Low Tier</h3><p class="w3-large">$600 - $800*</p></div>
-      <div class="w3-third"><h3 class="w3-text-blue">Mid Tier</h3><p class="w3-large">$1,200 - $1,600*</p></div>
-      <div class="w3-third"><h3 class="w3-text-red">High Tier</h3><p class="w3-large">$2,500+*</p></div>
+      <div class="w3-third"><h3 class="w3-text-green">Low Tier</h3></div>
+      <div class="w3-third"><h3 class="w3-text-blue">Mid Tier</h3></div>
+      <div class="w3-third"><h3 class="w3-text-red">High Tier</h3></div>
     </div>
     <div class="w3-center w3-margin-bottom">
       <p class="w3-text-grey w3-small">Prices are estimated and vary based on specific components.</p>
@@ -403,21 +388,20 @@
     <h2 class="w3-text-light-grey">Virus Removal & Security</h2>
     <hr style="width:200px" class="w3-opacity">
     <div class="w3-row w3-padding-32">
-      <div class="w3-col l6 m12 w3-center" style="display: flex; align-items: center; justify-content: center; min-height: 350px;">
-        <img src="virus.jpg" alt="Antivirus Security" class="w3-image w3-round-large" style="max-width:300px; width: 100%; height: auto;">
+      <div class="w3-col l6 m12 w3-center">
+        <img src="virus.jpg" alt="Antivirus Security" class="w3-image w3-round-large" style="max-width:300px">
       </div>
       <div class="w3-col l6 m12 w3-padding">
         <h3 class="w3-text-red">Clean, Protect, & Accelerate</h3>
-        <p class="w3-large">Hardware repair is only half the battle. Digital "clutter" and hidden threats are the leading causes of system slowdowns.</p>
+        <p class="w3-large">Hardware repair is only half the battle. Digital "clutter" and hidden threats are leading causes of system slowdowns.</p>
         <div class="w3-padding-large" style="background: rgba(26, 26, 26, 0.8); border: 1px solid #555; border-radius: 30px;">
           <p><b>The Security Suite ($15 Flat Fee):</b></p>
           <ul class="w3-ul w3-border-0">
-            <li><b class="w3-text-red">Bitdefender:</b> Top-tier real-time protection to prevent future infections.</li>
-            <li><b class="w3-text-blue">Malwarebytes:</b> Deep-system scanning to strip away existing threats.</li>
-            <li><b>Safe Deployment:</b> Guaranteed safe installation with zero data risk.</li>
+            <li><b class="w3-text-red">Bitdefender:</b> Top-tier real-time protection.</li>
+            <li><b class="w3-text-blue">Malwarebytes:</b> Deep-system scanning.</li>
+            <li><b>Safe Deployment:</b> Guaranteed safe installation.</li>
           </ul>
         </div>
-        <p class="w3-small w3-text-grey w3-margin-top">*This stagnant fee covers professional installation and initial optimization. Perfect for restoring factory-speed to a laggy PC.</p>
       </div>
     </div>
   </div>
@@ -430,7 +414,7 @@
       
       <div class="w3-row-padding" style="margin:8px -16px;">
         <div class="w3-half">
-          <label>Brand / Manufacturer</label>
+          <label>Brand</label>
           <select id="brand" onchange="runCalculator()">
             <option value="dell">Dell / Alienware</option>
             <option value="hp">HP / Pavilion / Omen</option>
@@ -441,7 +425,7 @@
           </select>
         </div>
         <div class="w3-half">
-          <label>Model Year Group</label>
+          <label>Model Year</label>
           <select id="year" onchange="runCalculator()">
             <option value="2025">2023 - 2025</option>
             <option value="2022">2020 - 2022</option>
@@ -464,81 +448,39 @@
       <div id="calc-output" class="w3-panel w3-border w3-border-white w3-padding-16 w3-center" style="display:none; border-radius: 15px;">
         <p id="out-text">Estimated Total: <span id="out-total" class="w3-text-green"></span></p>
         <button class="w3-button w3-small w3-blue w3-margin-bottom w3-round-large" onclick="addToQuote()">ADD TO QUOTE SECTION</button>
-        <div class="estimator-divider"></div>
-        <p class="w3-small" style="color:#aaa;">Note: Researched estimate. Shipping + fees may apply.</p>
       </div>
     </div>
   </div>
 
   <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
     <h2 class="w3-text-light-grey">Request a Custom Quote</h2>
-    
     <div class="w3-center">
-      <p class="w3-text-grey w3-small" style="margin-bottom: 5px;">Project Availability: 1 / 5 Slots Filled</p>
-      <div class="progress-container">
-        <div class="progress-bar">1/5</div>
-      </div>
+      <p class="w3-text-grey w3-small">Project Availability: 1 / 5 Slots Filled</p>
+      <div class="progress-container"><div class="progress-bar">1/5</div></div>
     </div>
-
     <hr style="width:200px" class="w3-opacity">
     <form action="https://formspree.io/f/mwvrlqod" method="POST">
       <input class="w3-input w3-padding-16" type="text" placeholder="Name *" required name="name">
       <input class="w3-input w3-padding-16" type="email" placeholder="Email *" required name="email">
-      
       <input class="w3-input w3-padding-16" type="text" placeholder="Device Model (Optional)" name="model" id="model-field">
-
-      <div style="position:relative">
-        <input class="w3-input w3-padding-16" type="text" placeholder="Serial Number (Optional)" name="serial" id="serial-field">
-        <span class="tooltip" style="position:absolute; right:10px; top:18px">
-            <i class="fa fa-question-circle"></i> Where is this?
-            <span class="tooltiptext">
-                <b>Windows:</b> Settings > System > About.<br><br>
-                <b>Windows Laptop:</b> Printed on the bottom case.<br><br>
-                <b>MacBook:</b> Apple Menu () > About This Mac. If it wont turn on check the bottom casing or your Apple ID device list. <br><i>Or printed by the device stand/foot.</i>
-            </span>
-        </span>
-      </div>
-
-      <textarea class="w3-input w3-padding-16" style="height:120px" id="message-field" placeholder="Describe your issue * (To send photos, please include a Google Drive link here or simply reply with pictures once I email you back!)" required name="message"></textarea>
-      <button class="w3-button w3-white w3-padding-large w3-round-large custom-btn" type="submit">SEND REQUEST</button>
+      <textarea class="w3-input w3-padding-16" style="height:120px" id="message-field" placeholder="Describe your issue *" required name="message"></textarea>
+      <button class="w3-button w3-white w3-padding-large w3-round-large" type="submit">SEND REQUEST</button>
     </form>
   </div>
 
   <div class="w3-padding-64 w3-content" id="reviews">
     <h2 class="w3-text-light-grey">Client Reviews</h2>
     <hr style="width:200px" class="w3-opacity">
-    
     <div id="reviews-list">
       <div class="review-card">
         <p class="w3-large">"Amazing helped me figure out parts for my computer!"</p>
-        <div class="star-rating">
-          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
-        </div>
+        <div class="star-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></div>
         <span class="w3-text-grey">- Gershom -</span>
       </div>
-
-      <div class="review-card">
-        <p class="w3-large">"He helped me build my gaming PC"</p>
-        <div class="star-rating">
-          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-        </div>
-        <span class="w3-text-grey">- Cristal -</span>
-      </div>
-
-      <div class="review-card">
-        <p class="w3-large">"Lo recuperé de Cedric, ahora funciona como normal por un buen precio"</p>
-        <div class="star-rating">
-          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
-        </div>
-        <span class="w3-text-grey">- Kevin Rochac -</span>
-      </div>
     </div>
-
     <div class="review-form-container">
       <form id="review-form" class="w3-center">
         <h3 class="w3-text-light-grey">Leave a Review</h3>
-        <p class="w3-small w3-text-grey">Posting will open your email app to send the review to me.</p>
-        
         <div class="w3-padding-16">
           <span id="star-selector">
             <i class="fa fa-star star-input" onclick="setRating(1)"></i>
@@ -549,54 +491,10 @@
           </span>
           <input type="hidden" id="rating-value" value="0">
         </div>
-
         <input class="w3-input w3-padding-16" type="text" id="review-name" placeholder="Your Name" required>
         <textarea class="w3-input w3-padding-16" style="height:100px" id="review-text" placeholder="Write your review here..." required></textarea>
-        
         <button class="w3-button w3-blue w3-padding-large w3-round-large" type="button" onclick="submitReview()">POST REVIEW</button>
       </form>
-    </div>
-  </div>
-
-  <div class="w3-padding-64 w3-content" id="payments">
-    <h2 class="w3-text-light-grey">Accepted Payments</h2>
-    <hr style="width:200px" class="w3-opacity">
-    <div class="w3-row w3-padding-32">
-      <div class="w3-col l6 m12 w3-center">
-        <img src="payments.jpg" alt="Accepted Payments" class="w3-image w3-round-large" style="max-width:300px">
-      </div>
-      <div class="w3-col l6 m12 w3-left-align w3-padding">
-        <p class="w3-large">For your convenience, I accept payments through common digital services:</p>
-        <p>
-          <span class="w3-text-green w3-xlarge"><b>Cash App:</b></span><br>
-          <span class="w3-xxlarge"><b>$CedBan</b></span>
-        </p>
-        <p>
-          <span class="w3-text-blue w3-xlarge"><b>Venmo:</b></span><br>
-          <span class="w3-xxlarge"><b>@CedBan</b></span>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-content w3-padding-64" id="about">
-    <h2 class="w3-text-light-grey">About Me</h2>
-    <hr style="width:200px" class="w3-opacity">
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-half">
-        <p>I am an IT Infrastructure student at the University of Minnesota focusing on Security and Systems Administration. As a dedicated IT professional, I specialize in the physical and digital health of computer systems. My experience ranges from complex custom gaming rigs to intricate laptop hardware repairs.</p>
-        <p>I believe in transparent pricing and high-performance standards. Whether it's a 2017 legacy machine or a 2025 cutting-edge build, I ensure every system leaves my bench optimized for longevity and speed. My approach combines academic knowledge of network security with hands-on mechanical expertise to deliver reliable hardware solutions.</p>
-      </div>
-      <div class="w3-half">
-        <div class="w3-row">
-          <div class="w3-col s6" style="padding:5px">
-            <img src="IMG_7653.jpg" style="width:100%; border-radius:25px" alt="Repair Work">
-          </div>
-          <div class="w3-col s6" style="padding:5px">
-            <img src="cedric.JPG" style="width:100%; border-radius:25px" alt="Portrait">
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -606,74 +504,18 @@
 </div>
 
 <script>
-  /* FLASHLIGHT POSITIONING SCRIPT */
   const flashlight = document.getElementById('flashlight');
-  
   window.addEventListener('mousemove', e => {
     flashlight.style.setProperty('--x', e.clientX + 'px');
     flashlight.style.setProperty('--y', e.clientY + 'px');
   });
-
-  window.addEventListener('touchmove', e => {
-    const touch = e.touches[0];
-    flashlight.style.setProperty('--x', touch.clientX + 'px');
-    flashlight.style.setProperty('--y', touch.clientY + 'px');
-  });
-
-  let currentRating = 0;
-
-  function setRating(n) {
-    currentRating = n;
-    document.getElementById("rating-value").value = n;
-    const stars = document.querySelectorAll('.star-input');
-    stars.forEach((star, index) => {
-      star.classList.toggle('active', index < n);
-    });
-  }
-
-  function submitReview() {
-    const name = document.getElementById("review-name").value;
-    const text = document.getElementById("review-text").value;
-
-    if (!name || !text || currentRating === 0) {
-      alert("Please fill in your name, review text, and a star rating.");
-      return;
-    }
-
-    const subject = encodeURIComponent("New Website Review from " + name);
-    const body = encodeURIComponent(`Reviewer: ${name}\nRating: ${currentRating}/5 Stars\n\nReview:\n${text}`);
-    
-    window.location.href = `mailto:cedricbanzeba@gmail.com?subject=${subject}&body=${body}`;
-
-    alert("Opening your email app to send the review! Once I receive it, I will manually add it to the site. Thanks, Baledi.");
-    
-    document.getElementById("review-name").value = "";
-    document.getElementById("review-text").value = "";
-    setRating(0);
-  }
 
   function runCalculator() {
     const brand = document.getElementById("brand").value;
     const year = parseInt(document.getElementById("year").value);
     const part = document.getElementById("part").value;
     const output = document.getElementById("calc-output");
-    
     if (part === "none") { output.style.display = "none"; return; }
-
-    if (brand === "custom" && part === "build") {
-      document.getElementById("out-total").innerHTML = "<b>Consult Required</b>";
-      document.getElementById("out-text").innerHTML = "Custom builds vary. Please use the <a href='#contact' style='color:#fff'>Quote Section</a>.";
-      output.style.display = "block";
-      return;
-    }
-
-    // Antivirus logic: Stagnant $15 price
-    if (part === "antivirus") {
-      document.getElementById("out-total").innerText = "$15";
-      document.getElementById("out-text").innerHTML = "Estimated Total (Stagnant Fee): <span id='out-total' class='w3-text-green'>$15</span>";
-      output.style.display = "block";
-      return;
-    }
 
     let laborHours = 1.5;
     let basePart = 0;
@@ -697,19 +539,24 @@
     const yearText = document.getElementById("year").options[document.getElementById("year").selectedIndex].text;
     const serviceText = document.getElementById("part").options[document.getElementById("part").selectedIndex].text;
     const estimate = document.getElementById("out-total").innerText;
-    
     document.getElementById("model-field").value = brandText + " (" + yearText + ")";
-    document.getElementById("message-field").value = `I'm interested in a ${serviceText}. Estimate shown: ${estimate}. [Add more details...]`;
+    document.getElementById("message-field").value = `I'm interested in a ${serviceText}. Estimate shown: ${estimate}.`;
     document.getElementById("contact").scrollIntoView({ behavior: 'smooth' });
   }
 
-  function toggleMobileNav() {
-    var x = document.getElementById("mobileNav");
-    if (x.className.indexOf("w3-show") == -1) {
-      x.className += " w3-show";
-    } else { 
-      x.className = x.className.replace(" w3-show", "");
-    }
+  let currentRating = 0;
+  function setRating(n) {
+    currentRating = n;
+    document.getElementById("rating-value").value = n;
+    const stars = document.querySelectorAll('.star-input');
+    stars.forEach((star, index) => { star.classList.toggle('active', index < n); });
+  }
+
+  function submitReview() {
+    const name = document.getElementById("review-name").value;
+    const text = document.getElementById("review-text").value;
+    if (!name || !text || currentRating === 0) { alert("Please complete form."); return; }
+    window.location.href = `mailto:cedricbanzeba@gmail.com?subject=Review&body=${name}: ${text}`;
   }
 </script>
 

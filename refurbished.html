@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Refurbished Deals | CedBan</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+  body, h1, h2, h3, h4, h5, h6 {font-family: "Montserrat", sans-serif}
+  body { background-color: #000; margin: 0; padding: 0; color: white; }
+
+  /* FLASHLIGHT BACKGROUND */
+  .bg-reveal-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-image: url('motherboard.jpg'); background-size: cover; background-position: center; background-attachment: fixed; }
+  .bg-reveal-mask { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: black; mask-image: radial-gradient(circle 150px at var(--x, 50%) var(--y, 50%), transparent 0%, black 100%); -webkit-mask-image: radial-gradient(circle 150px at var(--x, 50%) var(--y, 50%), transparent 0%, black 100%); }
+
+  /* MAIN CONTENT - Removed sidebar margin */
+  #main { margin-left: 0; }
+  
+  /* TOP NAV STYLING */
+  .top-nav { background: rgba(17, 17, 17, 0.9); border-bottom: 1px solid #333; }
+  
+  /* ROUNDED ELEMENTS */
+  .custom-btn { border-radius: 30px !important; padding: 12px 24px; transition: 0.3s; font-weight: bold; }
+  .spec-card { background: rgba(26, 26, 26, 0.9); border: 1px solid #444; border-radius: 25px; padding: 30px; margin-bottom: 20px; }
+
+  /* FORM INPUT STYLING */
+  .custom-input {
+    width: 100%;
+    background: #222;
+    color: white;
+    border: 1px solid #444;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: block;
+    font-family: inherit;
+  }
+
+  /* IMAGE SLIDER & MAGNIFICATION */
+  .slider-container { position: relative; max-width: 800px; margin: auto; overflow: hidden; border-radius: 20px; border: 2px solid #555; }
+  .slides { display: none; width: 100%; cursor: zoom-in; }
+  .slider-btn { cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -22px; color: white; font-weight: bold; font-size: 20px; transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none; background: rgba(0,0,0,0.5); z-index: 2; }
+  .slider-btn:hover { background-color: rgba(0,0,0,0.8); }
+  .next { right: 0; border-radius: 3px 0 0 3px; }
+
+  @media only screen and (max-width: 600px) {
+    .bg-reveal-mask {
+       mask-image: radial-gradient(circle 100px at var(--x, 50%) var(--y, 50%), transparent 0%, black 100%);
+       -webkit-mask-image: radial-gradient(circle 100px at var(--x, 50%) var(--y, 50%), transparent 0%, black 100%);
+    }
+  }
+</style>
+</head>
+
+<body class="w3-black">
+
+<div class="bg-reveal-container"><div class="bg-reveal-mask" id="flashlight"></div></div>
+
+<div class="w3-top top-nav">
+  <div class="w3-bar w3-center w3-small">
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-hover-grey"><i class="fa fa-home"></i> HOME</a>
+    <a href="index.html#projects" class="w3-bar-item w3-button w3-padding-large w3-hover-grey"><i class="fa fa-desktop"></i> WORK</a>
+  </div>
+</div>
+
+<div class="w3-padding-large" id="main">
+  <header class="w3-container w3-padding-64 w3-center">
+    <h1 class="w3-jumbo">Refurbished Hardware</h1>
+    <p>Certified repairs. Optimized for performance.</p>
+    <a href="index.html" class="w3-button w3-light-grey custom-btn w3-margin-top">BACK TO HOME</a>
+  </header>
+
+  <div class="w3-content w3-padding-64">
+    <div class="w3-row-padding">
+      <div class="w3-half">
+        <div class="slider-container" id="slider">
+          <img class="slides" src="IMG_6623.jpeg" onclick="zoomImg(this)">
+          <img class="slides" src="IMG_6624.jpeg" onclick="zoomImg(this)">
+          <img class="slides" src="IMG_6625.jpeg" onclick="zoomImg(this)">
+          <img class="slides" src="IMG_6626.jpeg" onclick="zoomImg(this)">
+          <img class="slides" src="IMG_6627.jpeg" onclick="zoomImg(this)">
+          
+          <a class="slider-btn" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="slider-btn next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <p class="w3-center w3-text-grey w3-small">Click image to toggle zoom | Swipe to navigate</p>
+      </div>
+
+      <div class="w3-half">
+        <div class="spec-card">
+          <h2 class="w3-text-blue">Lenovo Ideapad 320-15ISK</h2>
+          <h3 class="w3-text-green">$250</h3>
+          <hr style="width:100px;border-color:#2196F3">
+          <ul class="w3-ul w3-border-0">
+            <li><b>Processor:</b> AMD A12-9720P</li>
+            <li><b>Memory:</b> 8GB DDR4 RAM</li>
+            <li><b>Storage:</b> 256GB SSD (New)</li>
+            <li><b>Display:</b> 15.6" HD Anti-Glare</li>
+            <li><b>Extras:</b> Charger Included</li>
+          </ul>
+          <h4 class="w3-text-green w3-margin-top">Completed Repairs:</h4>
+          <p class="w3-small">Motherboard Replacement, Screen Replacement, Hinge Replacement, and Keyboard Replacement.</p>
+          
+          <form action="https://formspree.io/f/mwvrlqod" method="POST" class="w3-margin-top">
+            <input class="custom-input" type="text" name="name" placeholder="Full Name" required>
+            <input class="custom-input" type="email" name="email" placeholder="Email Address" required>
+            <textarea class="custom-input" name="message" rows="3">I am interested in this Lenovo Ideapad 320.</textarea>
+            <input type="hidden" name="interest" value="Lenovo Ideapad 320 Refurbished">
+            <button type="submit" class="w3-button w3-blue w3-block custom-btn">I AM INTERESTED</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* FLASHLIGHT EFFECT */
+  const flashlight = document.getElementById('flashlight');
+  window.addEventListener('mousemove', e => {
+    flashlight.style.setProperty('--x', e.clientX + 'px');
+    flashlight.style.setProperty('--y', e.clientY + 'px');
+  });
+
+  window.addEventListener('touchmove', e => {
+    const touch = e.touches[0];
+    flashlight.style.setProperty('--x', touch.clientX + 'px');
+    flashlight.style.setProperty('--y', touch.clientY + 'px');
+  });
+
+  /* SLIDER LOGIC */
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) { showSlides(slideIndex += n); }
+  function showSlides(n) {
+    let slides = document.getElementsByClassName("slides");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+    slides[slideIndex-1].style.display = "block";
+  }
+
+  /* ZOOM/MAGNIFICATION */
+  function zoomImg(img) {
+    img.style.transform = (img.style.transform === "scale(1.5)") ? "scale(1)" : "scale(1.5)";
+    img.style.transition = "transform 0.3s ease";
+    img.style.zIndex = "100";
+  }
+
+  /* SWIPE LOGIC */
+  let touchstartX = 0;
+  let touchendX = 0;
+  const slider = document.getElementById('slider');
+
+  slider.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; });
+  slider.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX;
+    if (touchendX < touchstartX - 50) plusSlides(1);
+    if (touchendX > touchstartX + 50) plusSlides(-1);
+  });
+</script>
+</body>
+</html>
