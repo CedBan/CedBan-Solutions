@@ -76,6 +76,25 @@
     border-radius: 20px;
   }
 
+  /* TIER HOVER LOGIC */
+  .tier-card {
+    position: relative;
+    padding: 20px;
+    background: rgba(26, 26, 26, 0.6);
+    border: 1px solid #333;
+    border-radius: 20px;
+    cursor: default;
+    transition: 0.3s;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tier-card:hover {
+    background: rgba(40, 40, 40, 0.8);
+  }
+
   .repair-img {
     width: 100%;
     height: 100%;
@@ -105,7 +124,7 @@
     z-index: 10;
   }
 
-  .repair-card:hover .hover-bubble {
+  .repair-card:hover .hover-bubble, .tier-card:hover .hover-bubble {
     opacity: 1;
     transform: translateY(0);
   }
@@ -327,12 +346,34 @@
 
   <div class="w3-padding-64 w3-content" id="building">
     <h2 class="w3-text-light-grey">Building a Computer</h2>
+    <p class="w3-text-grey">Hover over each tier for details</p>
     <hr style="width:200px" class="w3-opacity">
     
     <div class="w3-row-padding w3-center" style="margin-bottom:8px">
-      <div class="w3-third"><h3 class="w3-text-green">Low Tier</h3></div>
-      <div class="w3-third"><h3 class="w3-text-blue">Mid Tier</h3></div>
-      <div class="w3-third"><h3 class="w3-text-red">High Tier</h3></div>
+      <div class="w3-third">
+        <div class="tier-card">
+          <h3 class="w3-text-green">Low Tier</h3>
+          <div class="hover-bubble">
+            <b>Budget-Friendly:</b> Perfect for daily office work, browsing, and light 1080p gaming. Focuses on value per dollar.
+          </div>
+        </div>
+      </div>
+      <div class="w3-third">
+        <div class="tier-card">
+          <h3 class="w3-text-blue">Mid Tier</h3>
+          <div class="hover-bubble">
+            <b>The Sweet Spot:</b> High-performance gaming and multitasking. Reliable components built for longevity and 1440p resolution.
+          </div>
+        </div>
+      </div>
+      <div class="w3-third">
+        <div class="tier-card">
+          <h3 class="w3-text-red">High Tier</h3>
+          <div class="hover-bubble">
+            <b>Enthusiast Grade:</b> No compromises. Optimized for 4K gaming, 3D rendering, and professional video editing.
+          </div>
+        </div>
+      </div>
     </div>
     <div class="w3-center w3-margin-bottom">
       <p class="w3-text-grey w3-small">Prices are estimated and vary based on specific components.</p>
